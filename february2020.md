@@ -76,7 +76,7 @@ Disaster Recovery - from server failures to power outages to software issues to 
 
 Comment from the audience - nothing is perfect, but this is an actual example of disaster recovery planning which is RARE.
 
-## My journey into SRE, Jai Campbell
+## My journey into SRE, Jai Campbell
 
 - "A long road" - moving into the cloud single piece at a time
 - Use O'Reilly SRE book, but embrace it with Wikipedia
