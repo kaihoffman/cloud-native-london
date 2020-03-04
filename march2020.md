@@ -2,6 +2,8 @@
 
 ## Cloud State of Play, Richard Simon, World Wide Technology
 
+Word Wide Tech have an Advanced Tech Centre (ATC) data centre that users can view and learn from. https://atc.com allows you to play with it yourself!
+
 ### Introduction
 
 Focus is on cloud migration strategies, optimising their approach, rather than a deep technical outlook.
