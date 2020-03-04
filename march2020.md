@@ -25,6 +25,7 @@ Movement to microservices, CI/CD pipelines, faster development, automation and a
 WHat about security? -> DevSecOps is a focus now.
 
 The "goal" is "serverless" and infrastructure as code - get spot instances and only pay for what you actively use.
+
   - "World engines" - describe the world that you want and a machine creates the environment.
 
 ### Migration Strategies
@@ -65,3 +66,31 @@ Design for a cloud native operating model!
 - Look at the way to migrate all parts of your application - entire database etc! Is it still worth it monetarily?
 
 Other considerations: Security? Observability? Data management, infrastructure security
+
+## Build and test GCP Infrastructure Using Terraform Module, Pradeep Bahadani, Cloud Native Technologies (founder)
+
+### Terraform
+
+- Open-source tool to build infrastructure as declarative code.
+- Lifecycle: 4 stages
+  - `Terraform init` to initialise repository and modules
+  - `terraform plan` to execution plan
+  - `terraform apply` to actually execute this with the cloud API to create resources.
+  - `terraform destroy` to get rid of resources
+
+- On GCP, the complexity of the platform (storage, service ccount, Web Server, Subnets, etc) means that multiple instances are a pain to create the same way.
+  - You can create the code, but it's environment-specific for each project. Leads into code duplication and possible security / divergence issues.
+  - Solution: Terraform Modules
+
+### Terraform Modules
+
+- Modules: Abstract your logic into a function and call the function with arguments you provide (e.g. environment specifics)
+  - Re-usable: Helps avoid code duplication.
+  - Collaborative development - resides in a single repository
+  - Helps you to get started quickly with different platforms - c.f. Docker registry!
+- Passing variables to terraform module, calling different values in different blocks, and the function gets executed each time for each block.
+
+### Testing
+
+- Frameworks: Open source test frameworks e.g. Test Kitchen - Ruby files defining tests
+  - Lifecycle - `create`, `converge`, `verify`, `destroy`.
