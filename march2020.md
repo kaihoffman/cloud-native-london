@@ -94,3 +94,15 @@ Other considerations: Security? Observability? Data management, infrastructure s
 
 - Frameworks: Open source test frameworks e.g. Test Kitchen - Ruby files defining tests
   - Lifecycle - `create`, `converge`, `verify`, `destroy`.
+
+## Kubernetes Lifecycle Management With Cluster API, Nadir Jeewa, VMware
+
+### Why ClusterAPI exists
+
+### Demo
+
+### How ClusterAPI works
+
+### Some of the Challenges
+
+### How to Help
