@@ -98,11 +98,44 @@ Other considerations: Security? Observability? Data management, infrastructure s
 ## Kubernetes Lifecycle Management With Cluster API, Nadir Jeewa, VMware
 
 ### Why ClusterAPI exists
+What is a Kubernetes Cluster?
+
+- Infrastructure
+  - Networking
+  - Firewall Rules
+  - Provider specific services
+  - Load Balancer
+- Minimum: Container runtime, kubeletc, etcd, kube-apiserver, kube-scheduler, kube-controller-manager, kube-proxy, CNI provider, CoreDNS
+- "Kubernetes is not a container orchestrator. It is a web server that lets you write values and have them reflected back, and part of the service is a component that runs orchestration"
+- Bootstrapping the components?
+  - One of the options: Kubeadm (cf. Docker Swarm, i.e. simplicity)
+    - Owned by Kubernetes SIG Lifecycle, helps create a new control plane node, then you can join other nodes.
+    - Building block for higher-level systems.
+    - Does NOT handle infrastructure (images, firewalls, etc above). All it does is get kubelet and etcd running.
+  - Puppet / Chef / Terraform / etc - declaratively write configurations for your whole pre-planned components.
+    - Important to think about the strategy in advance to make things work.
+  - ClusterAPI: Part of "Kubernetes in Layers" (cf. "Turtles all the way down")
+    - Declarative Li
+    Lifecycle Management of Kubernetes Clusters
+
 
 ### Demo
 
+[Lots of Yaml]
+
 ### How ClusterAPI works
+
+- You need a Kubernetes cluster to start off with! E.g. KIND
+  - It needs to run Cluster API and controllers for your providers
+- v1Alpha3 - abstracts out clusters, machines, machinesSets, machineDeployments, MachineTemplates as cluster components
+
+In Kubernetes - everything is a controller (comes from robotics theory). Constantly check the state of the world and then make changes to try to reconcile the world to make them more your intention. It's an infinite loop to keep the state correct or try and MAKE the state correct.
+  - Each controller only controls its own context. E.g. machine set will notice that YAML now has 3 machines declared. This will then try and create a new machine - which then passes the request to e.g. AWS controller to actually implement.
+
+[Look up Cluster API v1Alpha3 architecture. It's pretty neat. They are also making `clusterctl` to allow you to manage these.]
 
 ### Some of the Challenges
 
-### How to Help
+- To work with AWS, you have to understand how AWS works internally! It's quite opaque.
+
+[Time ran out, sadly]
